@@ -3,9 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-.bash*
-.nano*
-.profile
+.*
 
 # C extensions
 *.so
