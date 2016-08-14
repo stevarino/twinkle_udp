@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# performs a checkout, migrate the database, and restart the webserver
+
+GIT_WORK_TREE=/home/web/ git checkout -f
+
+source /home/web/venv/bin/activate
+
+# Install python libs via pip and perform database migrations
+pip install --upgrade -r requirements.txt
+pushd /home/web/twinkle_udp
+python manage.py migrate
+
+kill `ps aux | grep runserver | grep -v grep | awk '{print $2}'`
+python manage.py runserver
+
+popd
+deactivate
