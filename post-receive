@@ -8,11 +8,12 @@ source /home/web/venv/bin/activate
 
 # Install python libs via pip and perform database migrations
 pip install --upgrade -r requirements.txt
+
 pushd /home/web/twinkle_udp
 python manage.py migrate
 
-kill `ps aux | grep runserver | grep -v grep | awk '{print $2}'`
-python manage.py runserver
-
 popd
 deactivate
+
+supervisorctl restart server_workers
+supervisorctl restart server_interface
