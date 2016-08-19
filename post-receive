@@ -1,15 +1,23 @@
 #!/bin/bash
 
-# performs a checkout, migrate the database, and restart the webserver
+# copy config files, performs a checkout, migrate the database, and restart the
+# webserver
 
-GIT_WORK_TREE=/home/web/ git checkout -f
+GIT_WORK_TREE=/home/web/twinkle_udp
+
+git checkout -f
+
+sudo cp /home/web/twinkle_udp/configs/supervisord.conf /etc/supervisor/supervisord.conf
+sudo cp /home/web/twinkle_udp/configs/server_* /etc/supervisor/conf.d/
+sudo rm /etc/nginx/sites-enabled/*
+sudo cp /home/web/twinkle_udp/configs/twinkle_udp /etc/nginx/sites-enabled/twinkle_udp
 
 source /home/web/venv/bin/activate
 
 # Install python libs via pip and perform database migrations
 pip install --upgrade -r requirements.txt
 
-pushd /home/web/www
+pushd /home/web/twinkle_udp/www
 python manage.py migrate
 
 popd
