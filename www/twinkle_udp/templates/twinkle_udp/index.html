@@ -1,0 +1,48 @@
+<html>
+<head><title>Twinkle</title>
+  <script src='{% static "twinkle_udp/jquery-3.1.0.min.js" %}'></script>
+  <script src='{% static "twinkle_udp/spectrum.js" %}'></script>
+  <link rel='stylesheet' href='{% static "twinkle_udp/spectrum.css" %}' />
+  <script>
+    $(function() {
+      $('.color').spectrum({color: '#000'});
+    })
+  </script>
+</head>
+
+<body>
+  <p>
+    <label for='id'>Light:</label>
+    <select name='id'>
+      <option value='FFFFFFFF'>All</option>
+    </select>
+  </p>
+  <p>
+    <label for='command'>Command:</label>
+    <select name='command'>
+      <option value='00'>Fill</option>
+      <option value='01'>Rainbow</option>
+      <option value='02'>Twinkle</option>
+      <option value='FE'>Set Count</option>
+      <option value='FD'>Reset</option>
+    </select>
+  </p>
+  <p>
+    <label for='count'>Count:</label>
+    <input type='text' name='count' />
+  </p>
+  <p>
+    <label for='delay'>Count:</label>
+    <input type='text' name='delay' />
+  </p>
+  <p>
+    <label for='color1'>Count:</label>
+    <input type='text' name='color1' class='color' />
+  </p>
+  <p>
+    <label for='color2'>Count:</label>
+    <input type='text' name='color2' class='color' />
+  </p>
+
+</body>
+</html>
