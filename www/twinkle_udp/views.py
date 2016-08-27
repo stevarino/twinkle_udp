@@ -29,7 +29,7 @@ def index(request):
         else:
             send_command(id+command)
 
-    return render(request, 'twinkle_udp/templates/index.html')
+    return render(request, 'index.html')
 
 def send_command(message):
     send_udp(message)

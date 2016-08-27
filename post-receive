@@ -5,7 +5,7 @@
 
 GIT_WORK_TREE=/home/web/twinkle_udp
 
-git checkout -f
+# git checkout -f
 
 sudo cp /home/web/twinkle_udp/configs/supervisord.conf /etc/supervisor/supervisord.conf
 sudo cp /home/web/twinkle_udp/configs/server_* /etc/supervisor/conf.d/
@@ -15,7 +15,7 @@ sudo cp /home/web/twinkle_udp/configs/twinkle_udp /etc/nginx/sites-enabled/twink
 source /home/web/venv/bin/activate
 
 # Install python libs via pip and perform database migrations
-pip install --upgrade -r requirements.txt
+# pip install --upgrade -r requirements.txt
 
 pushd /home/web/twinkle_udp/www
 python manage.py migrate

@@ -1,6 +1,7 @@
+{% load static %}
 <html>
 <head><title>Twinkle</title>
-  <script src='{% static "twinkle_udp/jquery-3.1.0.min.js" %}'></script>
+  <script src='{% static "jquery-3.1.0.min.js" %}'></script>
   <script src='{% static "twinkle_udp/spectrum.js" %}'></script>
   <link rel='stylesheet' href='{% static "twinkle_udp/spectrum.css" %}' />
   <script>
@@ -11,6 +12,8 @@
 </head>
 
 <body>
+<form action='/' method='POST'>
+{% csrf_token %}
   <p>
     <label for='id'>Light:</label>
     <select name='id'>
@@ -32,17 +35,19 @@
     <input type='text' name='count' />
   </p>
   <p>
-    <label for='delay'>Count:</label>
+    <label for='delay'>Delay:</label>
     <input type='text' name='delay' />
   </p>
   <p>
-    <label for='color1'>Count:</label>
+    <label for='color1'>Color 1:</label>
     <input type='text' name='color1' class='color' />
   </p>
   <p>
-    <label for='color2'>Count:</label>
+    <label for='color2'>Color 2:</label>
     <input type='text' name='color2' class='color' />
   </p>
 
+<input type='submit'>
+</form>
 </body>
 </html>
